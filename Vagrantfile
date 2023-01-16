@@ -7,6 +7,9 @@ Vagrant.configure("2") do |config|
 
   config.ssh.insert_key = false
   
+
+  config.ssh.insert_key = false
+  
   config.vm.define "flik" do |flik|
     flik.vm.hostname = "flik"
     flik.vm.provider :virtualbox do |vb|

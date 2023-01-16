@@ -37,6 +37,14 @@ sudo add-apt-repository --yes --update ppa:ansible/ansible
 sudo apt install ansible
 ```
 
+## The Inventory File
+
+The invetory file is where you describe the servers that you are going to manage. Creating a simple inventory file to test the installation
+
+```
+
+```
+
 ## Inventory File
 
 The inventory is the most basic building block in Ansible. Nothing happens without as inventory. To reference the inventory that is outsite the default location, use the `--inventory-file` (`-i`) argument.

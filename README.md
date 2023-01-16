@@ -14,7 +14,7 @@ Once installed, initialize the Vagrant script by running
 mgarcia@arda:~/Work/vagrant_test$ vagrant init
 ```
 
-This will create a boot script called `Vagrantfile`](https://developer.hashicorp.com/vagrant/docs/vagrantfile) with can further configured for the project.
+This will create a boot script called [`Vagrantfile`](https://developer.hashicorp.com/vagrant/docs/vagrantfile) with can further configured for the project.
 
 ## What is Ansible?
 

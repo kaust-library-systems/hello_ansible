@@ -1,6 +1,20 @@
 # Learning Ansible
 
-Learning to use Ansible
+Learning to use Ansible with [Vagrant](https://www.vagrantup.com/)
+
+## Vagrant
+
+> Vagrant can use several virtualization mechanisms, but the best option is to use Virtualbox as provider.
+
+To [install](https://developer.hashicorp.com/vagrant/downloads) Vagrant on Windows, just download and run the installer. To install on Linux system, you will add the repository
+
+Once installed, initialize the Vagrant script by running
+
+```
+mgarcia@arda:~/Work/vagrant_test$ vagrant init
+```
+
+This will create a boot script called `Vagrantfile`](https://developer.hashicorp.com/vagrant/docs/vagrantfile) with can further configured for the project.
 
 ## What is Ansible?
 

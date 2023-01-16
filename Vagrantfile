@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
         vb.memory = 2048
         vb.cpus = 2
     end
-    flik.vm.network "private_network", ip: "192.168.50.11"
+    flik.vm.network "private_network", ip: "192.168.56.11"
     flik.vm.boot_timeout = 600
   end
 
@@ -23,14 +23,14 @@ Vagrant.configure("2") do |config|
         vb.memory = 2048
         vb.cpus = 2
     end
-    hopper.vm.network "private_network", ip: "192.168.50.12"
+    hopper.vm.network "private_network", ip: "192.168.56.12"
     hopper.vm.network "forwarded_port", guest: 8080, host: 80
     hopper.vm.boot_timeout = 600
   end
 
   config.vm.define "atta", primary: true do |atta|
     atta.vm.hostname = "atta"
-    atta.vm.network "private_network", ip: "192.168.50.10"
+    atta.vm.network "private_network", ip: "192.168.56.10"
     atta.vm.provider :virtualbox do |vb|
         vb.memory = 2048
         vb.cpus = 2

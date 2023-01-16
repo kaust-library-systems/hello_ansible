@@ -1,0 +1,11 @@
+Host atta
+    HostName 192.168.50.10
+    StrictHostKeyChecking no
+
+Host flik
+    HostName 192.168.50.11
+    StrictHostKeyChecking no
+
+Host hopper
+    HostName 192.168.50.12
+    StrictHostKeyChecking no

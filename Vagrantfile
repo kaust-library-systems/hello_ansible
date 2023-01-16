@@ -3,13 +3,24 @@
 
 Vagrant.configure("2") do |config|
 
+  # Synched folders.
+  config.vm.synced_folder ".", "/vagrant", type: "rsync",
+  rsync__exclude: ".git/"
+
   config.vm.box = "ubuntu/jammy64"
 
   config.ssh.insert_key = false
-  
+  config.vm.provision "file", source: "keys/config",  destination: "~/.ssh/config"
+  config.vm.provision "file", source: "keys/vagrant", destination: "~/.ssh/id_rsa"
+  config.vm.provision "file", source: "keys/vagrant.pub", destination: "~/.ssh/id_rsa.pub"
+  config.vm.provision "shell", inline: "chmod 600 /home/vagrant/.ssh/id_rsa"
+  config.vm.provision "shell", inline: "chmod 600 /home/vagrant/.ssh/id_rsa.pub"
+  config.vm.provision "shell", inline: "chmod 600 /home/vagrant/.ssh/config"
 
-  config.ssh.insert_key = false
-  
+  #
+  # Using the IP range 192.168.56.0/21 as recommended by Virtualbox
+  # https://www.virtualbox.org/manual/ch06.html#network_hostonly
+  #
   config.vm.define "flik" do |flik|
     flik.vm.hostname = "flik"
     flik.vm.provider :virtualbox do |vb|

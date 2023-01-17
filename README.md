@@ -140,6 +140,61 @@ hopper | SUCCESS => {
 vagrant@atta:~$
 ```
 
-Where `--become` means to become another user, which the default is `root`, and the default privilege escalation is `sudo`. So the command above is equivalent of running `apt install vim` on each node.
+Where `--become` means to [become another user](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_privilege_escalation.html#), which the default is `root`, and the default privilege escalation is `sudo`. So the command above is equivalent of running `apt install vim` on each node.
 
 Another way, and probably the way that Ansible is used most, is via a _playbook_. A playbook is a script for doing something, installing a package, starting or stopping a service, etc.
+
+To show how to use a playbook, we will create one to install the `vim` editor, the same think we did with the _ad-hoc_ command before. The _play_ looks like this:
+
+```yaml
+---
+- name: Install vim editor
+  hosts: nodes
+  tasks:
+    - name: Installing vim editor
+      become: yes
+      apt:
+        name: vim
+        state: present
+```
+
+The structure of a _play_ always is same
+
+1. A `name` for the play. Not obrigatory, but is always a good idea.
+1. Which `hosts` are the target of the playbook.
+1. The `tasks` to be executed on the hosts
+   1. It's a good idea to `name` the task too.
+   1. the `become` is for _privilege escalation_, that is, to run the task with `sudo`.
+   1. Use the module `apt` to install package
+      1. The `name` of the package.
+      1. The `state` of the package, in general `present` to install or `absent` to uninstall.
+
+Running this _play_ will produce the following output
+
+```
+vagrant@atta:~$ ansible-playbook /vagrant/plays/vim_install.yml
+
+PLAY [Install vim editor] ********************************************************************************************************
+
+TASK [Gathering Facts] ***********************************************************************************************************
+ok: [flik]
+ok: [hopper]
+
+TASK [Installing vim editor] *****************************************************************************************************
+ok: [hopper]
+ok: [flik]
+
+PLAY RECAP ***********************************************************************************************************************
+flik                       : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+hopper                     : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+vagrant@atta:~$
+```
+
+We can identfy from the _play_
+
+1. The _play_ level name that we gave
+1. The `Gathering Facts` is a Ansible task that collects information about the host: name, IP, OS, version, and much more.
+   1. We can see the nodes where the task is running
+1. The `name` of the task, and again, the hosts where the task is running.
+1. Finally a `play recap`, where we see how many tasks succeed, how many failed, etc.

@@ -70,7 +70,7 @@ sudo apt install ansible
 
 ## Inventory File
 
-The [inventory](https://docs.ansible.com/ansible/latest/inventory_guide/index.html) is the most basic building block in Ansible. Nothing happens without as inventory. The default localtion of the inventory is the `host` in the Ansible installation directory. Using the SSH information from Vagrantfile above we create an inventory
+The [inventory](https://docs.ansible.com/ansible/latest/inventory_guide/index.html) is the most basic building block in Ansible. Nothing happens without as inventory. The default localtion of the inventory is the `hosts` file in the Ansible installation directory. Using the SSH information from Vagrantfile above we create an inventory
 
 ```
 vagrant@atta:~$ cat /etc/ansible/hosts
@@ -123,7 +123,7 @@ Modules provide the tools for working with Ansible. There are [modules for almos
 
 ## Using Ansible
 
-Ansible can be used in two ways: [_ad-hoc_](https://docs.ansible.com/ansible/latest/command_guide/intro_adhoc.html#why-use-ad-hoc-commands) and [_playbooks_](https://docs.ansible.com/ansible/latest/playbook_guide/index.html#). In the ad-hoc mode, Ansible is like a cluster shell, where it executes the command on all noders defined in the command line, which here, will be the `nodes` group define above
+Ansible can be used in two ways: [_ad-hoc_](https://docs.ansible.com/ansible/latest/command_guide/intro_adhoc.html#introduction-to-ad-hoc-commands) and [_playbooks_](https://docs.ansible.com/ansible/latest/playbook_guide/index.html#). In the ad-hoc mode, Ansible is like a cluster shell, where it executes the command on all noders defined in the command line, which here, will be the `nodes` group define above
 
 For example to install (module `apt`) `vim` on tbe nodes
 
@@ -140,4 +140,6 @@ hopper | SUCCESS => {
 vagrant@atta:~$
 ```
 
-Where `--become` means to become another user, which the default is `root`, and the default privilege escalation is `sudo`. So the command above would be the equivalent of running `apt install vim` on each node.
+Where `--become` means to become another user, which the default is `root`, and the default privilege escalation is `sudo`. So the command above is equivalent of running `apt install vim` on each node.
+
+Another way, and probably the way that Ansible is used most, is via a _playbook_. A playbook is a script for doing something, installing a package, starting or stopping a service, etc.

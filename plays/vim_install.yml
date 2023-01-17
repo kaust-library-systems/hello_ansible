@@ -1,0 +1,9 @@
+---
+- name: Install vim editor
+  hosts: nodes
+  tasks:
+    - name: Installing vim editor
+      become: yes
+      apt:
+        name: vim
+        state: present

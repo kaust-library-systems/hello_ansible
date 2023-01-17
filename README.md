@@ -110,7 +110,7 @@ Next we can start using Ansible. But before, a quick introduction to the work ho
 
 ## Modules
 
-Modules provide the tools for working with Ansible. There [modules for almost everything](https://docs.ansible.com/ansible/latest/collections/index_module.html), but we will be using most the [builtin modules](https://docs.ansible.com/ansible/latest/collections/index_module.html#ansible-builtin):
+Modules provide the tools for working with Ansible. There are [modules for almost everything](https://docs.ansible.com/ansible/latest/collections/index_module.html), but we will be using most the [builtin modules](https://docs.ansible.com/ansible/latest/collections/index_module.html#ansible-builtin):
 
 `apt`
 : install packages using the `apt` command.
@@ -119,7 +119,7 @@ Modules provide the tools for working with Ansible. There [modules for almost ev
 : copy files to the remote hosts.
 
 `service`
-: to manage services, that is, start, stop, reload, etc., a service like Apache or MySQL.
+: to manage services, that is, start, stop, reload, etc., services like Apache or MySQL.
 
 ## Using Ansible
 

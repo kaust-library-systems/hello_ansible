@@ -4,17 +4,29 @@ Learning to use Ansible with [Vagrant](https://www.vagrantup.com/)
 
 ## Vagrant
 
-> Vagrant can use several virtualization mechanisms, but the best option is to use Virtualbox as provider.
+Vagrant enables the creation of predictable development environments. That is, not only you will always have the same environment, but you can share with colleagues, and save a lot of time trying why something working in one team's computer, but not on the other. Vagrant can use several virtualization mechanisms, called _providers_, and the most common is Virtualbox.
 
 To [install](https://developer.hashicorp.com/vagrant/downloads) Vagrant on Windows, just download and run the installer. To install on Linux system, you will add the repository
+
+> Note: on Windows system a reboot is required after installing Vagrant.
 
 Once installed, initialize the Vagrant script by running
 
 ```
-mgarcia@arda:~/Work/vagrant_test$ vagrant init
+vagrant init
 ```
 
-This will create a boot script called [`Vagrantfile`](https://developer.hashicorp.com/vagrant/docs/vagrantfile) with can further configured for the project.
+This will create a boot script called [`Vagrantfile`](https://developer.hashicorp.com/vagrant/docs/vagrantfile) with can further configured for the project. The _init_ accepts as parameter the [_box_](https://app.vagrantup.com/boxes/search), that is, the operating system and release to use. For example, to create a VM with [Rocky Linux 9](https://rockylinux.org/):
+
+```
+vagrant init rockylinux/9
+```
+
+or to create Ubuntu VM with Ubuntu 22.04 LTS 64 bits:
+
+```
+vagrant init ubuntu/jammy64
+```
 
 ### SSH Config
 

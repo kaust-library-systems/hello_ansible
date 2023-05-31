@@ -27,8 +27,12 @@ or to create Ubuntu VM with Ubuntu 22.04 LTS 64 bits:
 ```
 vagrant init ubuntu/jammy64
 ```
+## Configuring the Virtual Machine
 
-### SSH Config
+
+### Multiple Machines
+
+#### SSH Config
 
 Althought not secure for production, for development purpose we can use Vagrant ssh keys. Also for convinience, we create a secondary interface and assign a private IP.
 

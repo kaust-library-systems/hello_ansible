@@ -22,34 +22,40 @@ Vagrant.configure("2") do |config|
   # https://www.virtualbox.org/manual/ch06.html#network_hostonly
   #
   config.vm.define "flik" do |flik|
+    # Display the VirtualBox GUI when booting the machine
     flik.vm.hostname = "flik"
     flik.vm.provider :virtualbox do |vb|
         vb.memory = 2048
         vb.cpus = 2
+        vb.gui = true
     end
     flik.vm.network "private_network", ip: "192.168.56.11"
-    flik.vm.boot_timeout = 600
+    flik.vm.boot_timeout = 900
   end
 
   config.vm.define "hopper" do |hopper|
+    # Display the VirtualBox GUI when booting the machine
     hopper.vm.hostname = "hopper"
     hopper.vm.provider :virtualbox do |vb|
         vb.memory = 2048
         vb.cpus = 2
+        vb.gui = true
     end
     hopper.vm.network "private_network", ip: "192.168.56.12"
     hopper.vm.network "forwarded_port", guest: 8080, host: 80
-    hopper.vm.boot_timeout = 600
+    hopper.vm.boot_timeout = 900
   end
 
   config.vm.define "atta", primary: true do |atta|
+    # Display the VirtualBox GUI when booting the machine
     atta.vm.hostname = "atta"
     atta.vm.provider :virtualbox do |vb|
         vb.memory = 2048
         vb.cpus = 2
+        vb.gui = true
     end
     atta.vm.network "private_network", ip: "192.168.56.10"
-    atta.vm.boot_timeout = 600
+    atta.vm.boot_timeout = 900
   end
 
 end
